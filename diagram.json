@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "Arthi V",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 48, "left": -33.56, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 78.3,
+      "left": -253.7,
+      "attrs": { "distance": "201" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 84.4, "left": 134.4, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo2", "top": -21.2, "left": 134.4, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -51.6,
+      "left": -34.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -51.6,
+      "left": 13.4,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -16.8,
+      "left": -132.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-28.8", "v-38.4" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "h-28.8", "v144.1", "h-134.4", "v-19.2" ] ],
+    [ "esp:18", "servo1:PWM", "gray", [ "h28.8", "v-19.2" ] ],
+    [ "servo2:GND", "esp:GND.2", "black", [ "h-38.4", "v86.4" ] ],
+    [ "servo2:V+", "esp:5V", "red", [ "h-172.8", "v249.7" ] ],
+    [ "servo2:PWM", "esp:19", "gray", [ "h-48", "v134.6" ] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "ultrasonic1:ECHO", "esp:12", "blue", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "esp:14", "blue", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v0", "h-172.8", "v201.6" ] ],
+    [ "led2:C", "esp:GND.2", "black", [ "v0", "h-18.8", "v-57.6", "h57.6" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v0", "h-18.8", "v-57.6", "h96" ] ],
+    [ "bz1:2", "esp:27", "orange", [ "v0", "h18.8", "v172.8" ] ],
+    [ "led1:A", "esp:26", "red", [ "v9.6", "h-48", "v163.2" ] ],
+    [ "led2:A", "esp:25", "limegreen", [ "v19.2", "h-86.4", "v144" ] ]
+  ],
+  "dependencies": {}
+}
